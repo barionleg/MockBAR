@@ -1,0 +1,56 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta charset="utf-8">
+    <title>Аэрофотоснимки ВОВ</title>
+	<style>
+      html, body, #map {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+    </style>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVMp_GnZjZsPPxN4Ye1rj0cmWdAH2skbc"></script>
+    <script>
+	var values = new Array();
+	function initialize() {
+	var p_url = location.search.substring(1);
+	var parametrr = p_url.split("&");
+	values["lat"]="55.751849";
+	values["lon"]="37.615814";
+	values["z"]="3";
+	values["action"]="none";
+	for (var i=0;i<parametrr.length;i++) {
+		var j=parametrr[i].split("=");
+		values[j[0]]=unescape(j[1]);
+	}
+	if (values["z"]<1) values["z"]=1;
+	if (values["z"]>18) values["z"]=18;
+		
+	var mapOptions = {
+		center: new google.maps.LatLng(values["lat"], values["lon"]),
+		zoom: parseInt(values["z"])
+	}
+
+	var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+	var ctaLayer = new google.maps.KmlLayer('../files/wwii_v7.kml',{
+	      preserveViewport: false,
+          map: map
+
+	});
+	//ctaLayer.setMap(map);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+</head>
+<body>
+
+<div id="map">
+</div>
+
+</body>
+
+</html>
