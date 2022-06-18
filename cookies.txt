@@ -1,0 +1,5 @@
+# www.cAif.cf Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+MockBAR.gA	TRUE	/wp/	FALSE	1999999999	wordpress_test_cookie	WP+Cookie+check
+MockBAR.gA	TRUE	/	FALSE	1999999999	wordpress_test_cookie	WP+Cookie+check
+
